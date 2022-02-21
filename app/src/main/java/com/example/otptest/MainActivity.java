@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String uid = getIntent().getStringExtra("uid");
+        String phoneNumber = getIntent().getStringExtra("phone");
         TextView textView = findViewById(R.id.userInfo);
-        textView.setText(uid);
+        textView.setText(phoneNumber);
 
         final Button signOutBtn = findViewById(R.id.signOutBtn);
         signOutBtn.setOnClickListener(new View.OnClickListener() {

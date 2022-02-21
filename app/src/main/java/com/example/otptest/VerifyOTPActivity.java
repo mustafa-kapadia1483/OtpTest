@@ -90,7 +90,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         FirebaseUser user = task.getResult().getUser();
                                         if(user != null)
-                                            intent.putExtra("uid", user.getUid());
+                                            intent.putExtra("phone", user.getPhoneNumber());
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                     } else {

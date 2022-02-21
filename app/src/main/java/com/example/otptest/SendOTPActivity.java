@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -28,6 +30,13 @@ public class SendOTPActivity extends AppCompatActivity {
         Button sendOtpBtn = findViewById(R.id.sendOtpBtn);
 
         final ProgressBar progressBar = findViewById(R.id.progressBar);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("phone", user.getPhoneNumber());
+            startActivity(intent);
+        }
 
 
         sendOtpBtn.setOnClickListener(view -> {
