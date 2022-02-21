@@ -18,8 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = fAuth.getInstance().getCurrentUser();
+        if(user == null) {
+            Intent intent = new Intent(getApplicationContext(), SendOTPActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
-        String phoneNumber = getIntent().getStringExtra("phone");
+        String phoneNumber = fAuth.getCurrentUser().getPhoneNumber();
         TextView textView = findViewById(R.id.userInfo);
         textView.setText(phoneNumber);
 

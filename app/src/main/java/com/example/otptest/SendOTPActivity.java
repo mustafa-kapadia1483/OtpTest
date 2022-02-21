@@ -31,13 +31,6 @@ public class SendOTPActivity extends AppCompatActivity {
 
         final ProgressBar progressBar = findViewById(R.id.progressBar);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("phone", user.getPhoneNumber());
-            startActivity(intent);
-        }
-
 
         sendOtpBtn.setOnClickListener(view -> {
             if(inputMobile.getText().toString().trim().isEmpty()) {
