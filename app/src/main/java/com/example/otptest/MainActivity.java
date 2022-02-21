@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
         String phoneNumber = getIntent().getStringExtra("phone");
         TextView textView = findViewById(R.id.userInfo);
@@ -26,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
         signOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+                fAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(), SendOTPActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
